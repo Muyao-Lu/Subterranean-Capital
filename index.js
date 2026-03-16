@@ -101,6 +101,8 @@ let n_rich = 0;
 let housing_supply = 0
 let house_list = [];
 
+let gameOver = false
+
 let available_cat_utility = {"power": 0, "water": 0, "food": 0, "health": 0, "security": 0, "education": 0}
 let available_utility = 0;
 let utilities_list = [];
@@ -835,15 +837,15 @@ class Housing{
                 <p id="quotation">"` +  housing_data[this.type]["flavor_text"] + `"</p>
                 <button id="delete-building-button" onclick="visual_city.objects[${this.dom_pos[1]}][${this.dom_pos[0]}].delete()">Delete Building (Cannot be undone)</button>
                 <button id="delete-all-building-button" onclick="deleteAllHousingBuildings(${this.level})">Delete All LV. ${this.level+1} housing units (Cannot be undone)</button>
-                <button id="close" onclick="document.querySelector('#tooltip-box').style.display = 'none'">Close</button>`
+                <button id="close" onclick="disableToolTipBox()">Close</button>`
     }
 
     delete(){
         let ind = house_list.indexOf(this);
         house_list.splice(ind, 1);
-        document.querySelector("#tooltip-box").style.display = "none";
         visual_city.deleteBuilding(this.dom_pos[0], this.dom_pos[1]);
         this.dom_pos = null;
+        disableToolTipBox();
     }
 
     getLogo(){
@@ -926,14 +928,15 @@ class UtilityBuilding{
                 <p id="quotation">"` +  necessity_data[this.category][this.type]["flavor_text"] + `"</p>
                 <button id="delete-building-button" onclick="visual_city.objects[${this.dom_pos[1]}][${this.dom_pos[0]}].delete()">Delete Building (Cannot be undone)</button>
                 <button id="delete-all-building-button" onclick="deleteAllUtilityBuildings('${this.category}', ${this.level})">Delete All LV. ${this.level + 1} ${this.category} buildings (Cannot be undone)</button>
-                <button id="close" onclick="document.querySelector('#tooltip-box').style.display = 'none'">Close</button>`
+                <button id="close" onclick="disableToolTipBox()">Close</button>`
     }
 
     delete(){
         let ind = utilities_list.indexOf(this);
         utilities_list.splice(ind, 1);
         visual_city.deleteBuilding(this.dom_pos[0], this.dom_pos[1]);
-        document.querySelector("#tooltip-box").style.display = "none";
+        disableToolTipBox();
+        
     }
 
     getLogo(){
@@ -1051,8 +1054,9 @@ class VisualCityGrid{
     squareClicked(x, y){
         if (this.objects[y][x] !== null && this.objects[y][x] !== "entrance"){
             let tooltip = this.objects[y][x].getToolTip();
-            document.querySelector("#tooltip-box").style.display = "block";
-            document.querySelector("#tooltip-box").innerHTML = tooltip;
+            let ttbox = document.querySelector("#tooltip-box")
+            ttbox.innerHTML = tooltip;
+            ttbox.className = "active"
 
         }
 
@@ -1186,6 +1190,7 @@ function simulate(){
     updateGlobalIndicators();
     visual_city.draw();
     generate_chatter();
+    checkGameOver();
 
     if (visual_city.getFilled()){
         document.querySelector("#building-filled-notice").textContent = "Notice! All building spots are filled. Demolish buildings to build more!"
@@ -1593,6 +1598,33 @@ function deleteAllHousingBuildings(level){
             house.delete()
         }
     }
+}
+
+function checkGameOver(){
+    if (! gameOver){
+        if (hamster_list.length === 0){
+            document.querySelector("#gameover-box").innerHTML = `You were supposed to raise a city. Instead, you killed the city.<br>
+                                                                The Hamster Bureau of development is not pleased.<br>
+                                                                The Hamstapol has been sent to seize all your assets.<br>
+                                                                Good luck
+                                                                
+                                                                <h1>Reload to start again</h1>`
+            document.querySelector("#gameover-box").className = "enabled"
+
+            let blur = document.createElement("div")
+            blur.id = "blur"
+
+            document.querySelector("body").appendChild(blur)
+            gameOver = true;
+    }
+    }
+    
+}
+
+function disableToolTipBox(){
+    let ttbox = document.querySelector("#tooltip-box")
+    ttbox.className = "default";
+    ttbox.textContent = "Click on a building to see it's stats"
 }
 
 
