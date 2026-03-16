@@ -731,8 +731,9 @@ class Hamster{
     }
 
     receiveLoanPayment(hamster, amt){
-        let remaining_loan = Math.max(0, owed - amt)
         let owed = this.borrowers.get(hamster) || 0
+        let remaining_loan = Math.max(0, owed - amt)
+        
         this.borrowers.set(hamster, remaining_loan);
         this.money += amt;
 
@@ -1654,5 +1655,5 @@ document.querySelector("#pn-slider").addEventListener("input", function(){public
 document.querySelector("#h-slider").addEventListener("input", function(){housing_portion=(+document.querySelector("#h-slider").value/100); savings_portion = 1 - rd_portion - public_necessity_portion - housing_portion; document.querySelector("#s-indicator").textContent = "Savings: " + Math.round(savings_portion * 100) + "%";})
 document.querySelector("#inheritance-tax").addEventListener("input", function(){inheritance_tax=document.querySelector("#inheritance-tax").checked})
 document.addEventListener("click", startGame)
-setInterval(simulate, 100)
+setInterval(simulate, 1000)
 setTimeout(function(){setInterval(checkUnlock, 1000); document.querySelector("#begin-instructions").textContent = "Click Anywhere to Begin"}, 3000)
