@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Subterranean Capital</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="music-player">
+            🔇
+        </div>
+        
+        <div id="sidebar">
+            <div id="tabs">
+
+                <p class="active" id="econ-tab">Economy</p>
+                <p id="stat-tab">Stats</p>
+                <p id="hamster-tab">Hamsters</p>
+                
+            </div>
+            <h1 id="sidebar-head">Economy</h1>
+            <hr>
+            <div id="econ-body" class="sidebar-text-body">
+                
+                <p id="tax-indicator">Tax: 0%</p> 
+                <div class="slider-div" >
+                    <p class="left">0%</p><input type="range" max="100" min="0" class="econ-slider" value="0" id="tax-slider"><p class="right">100%</p>
+                </div>
+
+                
+                
+                <p id="interest-indicator">Interest Rate: 0%</p> 
+                <div class="slider-div" >
+                    <p class="left">0%</p><input type="range" max="100" min="0" class="econ-slider" value="0" id="interest-slider"><p class="right">100%</p>
+                </div>
+
+                <p>Inheritance Tax? (On money before it's inherited)</p>
+                <input id="inheritance-tax" type="checkbox">
+
+                
+
+                
+                <div id="gov-spending-box">
+                    <div id="gov-spending-disable">
+                        Unlocked at 15 hamsters
+                    </div>
+                    <h2>Government Spending by Sector</h2>
+                    <hr>
+                    <p id="h-indicator">Housing: 20%</p> 
+                    <div class="slider-div">
+                        <p class="left">0%</p><input type="range" max="100", min="0" class="econ-slider" value="20" id="h-slider"><p class="right">100%</p>
+                    </div>
+                    
+                    <p id="pn-indicator">Utilities: 70%</p> 
+                    <div class="slider-div">
+                        <p class="left">0%</p><input type="range" max="100", min="0" class="econ-slider" value="70" id="pn-slider"><p class="right">100%</p>
+                    </div>
+
+                    
+                    
+                    
+                    <!--
+                    <p id="pr-indicator">Public Recreation: 0%</p> 
+                    <div class="slider-div" >
+                        <p class="left">0%</p><input type="range" max="100", min="0" class="econ-slider" value="0" id="pr-slider"><p class="right">100%</p>
+                    </div>
+                    -->
+
+                    <!--<p id="rd-indicator">Research and Development: 0%</p> 
+                    <div class="slider-div" >
+                        <p class="left">0%</p><input type="range" max="100", min="0" class="econ-slider" value="0" id="rd-slider"><p class="right">100%</p>
+                    </div>-->
+
+                    <p id="s-indicator">Savings: 10%</p> 
+                    <p id="building-filled-notice"></p>
+                </div>
+                <button id="print-money" disabled>Disabled. Unlocked at 100 Hamsters</button>
+                
+            </div>
+
+            <div id="stat-body" style="display: none;" class="sidebar-text-body">
+
+
+                <div class="stat">
+                    <p>Population:</p>
+                    <p id="pop-indicator" class="indicator"></p>
+                </div>
+
+                <div class="stat">
+                    <p>GDP:</p>
+                    <p id="gdp-indicator" class="indicator"></p>
+                </div>
+
+                <div class="stat">
+                    <p>Inflation Rate (CPI):</p>
+                    <p id="cpi-indicator" class="indicator"></p>
+                </div>
+
+                <h2>Market Demands</h2>
+                <hr>
+
+                <div class="stat">
+                    <p>Housing Supply:</p>
+                    <p id="housing-supply" class="indicator"></p>
+                </div>
+
+                <div class="stat">
+                    <p>Housing Demand:</p>
+                    <p id="housing-demand" class="indicator"></p>
+                </div>
+
+                <div class="stat">
+                    <p>Utility Supply:</p>
+                    <p id="utility-supply" class="indicator"></p>
+                </div>
+
+                <div class="stat">
+                    <p>Utility Demand:</p>
+                    <p id="utility-demand" class="indicator"></p>
+                </div>
+
+                <h2>Government Revenue & Spending</h2>
+                <hr>
+
+                <div class="stat">
+                    <div class="grouped-text">
+                        <p class="grouped-p">Government Surplus:</p>
+                        <small>Money added to reserves each year</small>
+                    </div>
+                    
+                    <p id="gov-revenue-indicator" class="indicator"></p>
+                </div>
+                
+
+                <div class="stat">
+                    <p>Government Reserves:</p>
+                    <p id="gov-reserve-indicator" class="indicator"></p>
+                </div>
+
+                <h2>Utilities</h2>
+                <hr>
+
+                <div class="stat">
+                    <p>Utilities Spending:</p>
+                    <p id="uspend-indicator" class="indicator"></p>
+                </div>
+
+                <div class="stat">
+                    <div class="grouped-text">
+                        <p class="grouped-p">Maintenance Cost:</p>
+                        <small>Cost to keep utilities running without expansion</small>
+                    </div>
+                    <p id="repair-cost-indicator" class="indicator"></p>
+                </div>
+                
+
+                <div class="stat">
+                    <div class="grouped-text">
+                        <p class="grouped-p">Extra Money for new Utilities:</p>
+                        <small>Total reserves for building new utilities. Capped at $10,000, decays 10% each year if not spent.</small>
+                    </div>
+                    <p id="extra-money-indicator" class="indicator"></p>
+                </div>
+                
+
+                <h2>Housing</h2>
+                <hr>
+
+                <div class="stat">
+                    <div class="grouped-text">
+                        <p class="grouped-p">Housing Spending:</p>
+                        <small>Yearly spending on houses</small>
+                    </div>
+                        
+                    <p id="hspend-indicator" class="indicator"></p>
+                </div>
+
+                <div class="stat">
+                    <div class="grouped-text">
+                        <p class="grouped-p">Extra Money for new Houses:</p>
+                        <small>Total reserves for building new houses. Capped at $10,000, decays 10% each year if not spent.</small>
+                    </div>
+                    <p id="housing-extra-money-indicator" class="indicator"></p>
+                </div>
+
+            </div>
+
+
+            <div id="hamster-body" style="display: none;" class="sidebar-text-body">
+                <div id="feed">
+                    <h1>Your feed</h1>
+                    <p id="feedtext-4"></p>
+                    <p id="feedtext-3"></p>
+                    <p id="feedtext-2"></p>
+                    <p id="feedtext-1"></p>
+                    <p id="feedtext-0"></p>
+
+                </div>
+
+                <br>
+                <br>
+
+                <p id="employed-indicator">Employed: </p>
+                <p id="unemployed-indicator">Unemployed: </p>
+                <p id="children-indicator">Kids: </p>
+                <p id="rebelling-indicator">Currently Rebelling: </p>
+                <p id="rich-indicator">Rich Hamsters: </p>
+                <p id="housing-filled-indicator">Enough Housing?: </p>
+                <p id="utility-filled-indicator">Enough Utilities?: </p>
+
+                
+
+                <table id="hamster-table">
+                    <thead id="heading">
+                        <td>Photo</td>
+                        <td>Name</td>
+                        <td>Age</td>
+                        <td>Money</td>
+                        <td>Children</td>
+                        <td>Happiness</td>
+                        <td>Employed?</td>
+                        
+                    </thead>
+                    <tr id="row" style="display: none;">
+                        <td><img src="hamster.png" class="icon"></td>
+                        <td class="name">Tim</td>
+                        <td class="age">15</td>
+                        <td class="money">$-2</td>
+                        <td class="children">6000</td>
+                        <td class="employed">Heck na</td>
+                    </tr>
+                </table>
+            </div>
+
+            
+        </div>
+        <div id="interactive-space">
+            <div id="bg"></div>
+            <div id="grid">
+                
+
+            </div>
+            <div id="tooltip-box">
+
+            </div>
+        </div>
+        <div id="blur"></div>
+        <div id="onboarding-tip">
+            <h1>Instructions</h1>
+            <hr>
+
+            <p>Welcome mayor. You have been assigned by the <b>Hamster Bureau of Development</b> to manage an underground bunker.</p>
+            <ol>
+                <li>Earn money in the <b>Economy Tab</b> by adjusting taxes. Taxes fund city growth.</li>
+                <br>
+                <li>As your city grows, you'll see new buildings and hamsters appear!</li>
+                <br>
+                <li>Curious to what that new building on your screen is? Click on it to find out!</li>
+                <br>
+                <li>Check on your hamsters in the <b>Hamsters Tab</b> to see if they have enough utilities and houses</li>        
+                <br>
+                <li>Unlock new economic controls as your population grows</li>
+                <br>
+                <li>Want an in depth overview of your city? Check out the <b>Stats Tab</b></li>
+                <br>
+                <li>Find a balance between <b>Housing</b> and <b>Utilities</b>. Too much housing will crowd out all your utilities!</li>
+                <br>
+            </ol>
+
+            <h1 id="begin-instructions">Please Wait</h1>
+                
+            
+        </div>
+
+        <script src="index.js"></script>
+        <script src="utility.js"></script>
+       
+    </body>
+</html>

@@ -1,0 +1,495 @@
+*{
+    font-family: monospace;
+    font-size: 24px;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+#bg{
+    background-image: url("dirt.png");
+    background-size: 512px 512px;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+#interactive-space{
+    width: 60vw;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    
+
+}
+
+#sidebar{
+    width: 40vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #f6f6f6;
+    z-index: 10;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+}
+
+#sidebar h2{
+    text-align: center;
+    font-size: 16px;
+}
+
+hr{
+    border: 2px solid #4f88de;
+    width: 20%;
+}
+
+#sidebar p{
+    font-size: 18px;
+
+}
+
+.sidebar-text-body{
+    padding: 20px;
+    height: 80%;
+    overflow-y: scroll;
+    
+    
+}
+#tabs{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 5%;
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+#tabs p{
+    display: flex;
+    font-size: 2vmin;
+    margin: 0;
+    width: 33%;
+    padding: 0;
+    
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+
+#tabs p.active{
+    background-color: #f6f6f6;
+    
+}
+
+.slider-div{
+    display: flex;
+    align-items: center;
+    width: 95%;
+    justify-content: space-around;
+}
+
+.slider-div p{
+    padding: 0;
+}
+
+.econ-slider {
+    -webkit-appearance: none;
+    appearance: none; 
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+.econ-slider::-webkit-slider-runnable-track {
+    height: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+}
+
+
+.econ-slider::-moz-range-track {
+    height: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.econ-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 15px;
+    width: 15px;
+    background-color: #ffffff;
+    border-radius: 100px;
+    border: 2px solid #000000;
+    box-shadow: -407px 0 0 400px #4f88de;
+}
+
+
+.econ-slider::-moz-range-thumb {
+    background-color: #ffffff;
+    border-radius: 100px;
+    border: 2px solid #000000;
+    box-shadow: -407px 0 0 400px #4f88de;
+    height: 15px;
+    width: 15px;
+}
+
+.slider-div .left{
+    margin-right: 5px;
+}
+
+.slider-div .right{
+    margin-left: 5px;
+}
+
+#feed{
+    background-color:rgb(26, 26, 26);
+    border: 2px solid white;
+    height: 20vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    padding: 10px;
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    
+
+}
+
+#feed p{
+    font-size: 12px;
+    color: white;
+}
+
+#feed h1{
+    font-size: 24px;
+    color: white;
+    margin: 0;
+}
+
+#feed hr{
+    border: 1px solid white;
+    width: 80%;
+}
+
+#hamster-table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#hamster-table #row{
+    
+    width: 100%;
+    overflow-x: scroll;
+}
+
+
+#hamster-table #heading{
+    background-color: rgba(0, 0, 0, 0.1)
+} 
+
+#hamster-table #row td, #hamster-table #heading td{
+    font-size: 12px;
+}
+
+#hamster-table #row .icon{
+    width: 30px;
+    height: 30px;
+}
+
+#hamster-table #row, #hamster-table td, #hamster-table{
+    border: 1px solid black;
+}
+
+#gov-spending-box{
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#print-money{
+    border: 2px solid #610303;
+    border-radius: 5px;
+    color: #610303;
+    background-color: #f4a8a8;
+    width: calc(100% - 40px);
+    margin: 20px;
+
+}
+
+#print-money:disabled, #print-money:disabled:hover{
+    border: 2px solid #3e3e3e;
+    border-radius: 5px;
+    color: white;
+    background-color: #777777;
+    width: calc(100% - 40px);
+    margin: 20px;
+
+}
+
+#print-money:hover{
+    background-color: #af7b7b;
+    color: #4a0303;
+    border: 2px solid #4a0303;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.indent-block{
+    margin-left: 15px;
+    font-size: 14px !important;
+
+}
+
+.double-indent-block{
+    margin-left: 30px;
+    font-size: 14px !important;
+}
+
+.cityRow{
+    display: flex;
+    height: calc(100% / 30);
+    width: min(100vh, 60vw);
+    
+    flex-wrap: nowrap;
+}
+
+.cityBlock{
+    height: 100%;
+    width: calc(100% / 30);
+    color: white;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#grid{
+    display: flex;
+    flex-direction: column;
+    width: min(100vh, 60vw);
+    height: min(100vh, 60vw);
+    position: absolute;
+    top: 0;
+    
+}
+
+#building-filled-notice{
+    color: #b64545;
+}
+
+.cityBlock.small-generator, .cityBlock.refined-generator, .cityBlock.oil-power, .cityBlock.geothermal-power, .cityBlock.nuclear-power, .cityBlock.hamster-power{
+    background-color: rgba(117, 103, 0, 0.7);
+}
+
+.cityBlock.basic-tank, .cityBlock.purifier-tank, .cityBlock.water-refinery{
+    background-color: rgba(0, 90, 147, 0.7);
+}
+
+.cityBlock.greenhouse, .cityBlock.growery, .cityBlock.farm, .cityBlock.hydroponics{
+    background-color: rgba(0, 70, 7, 0.7);
+}
+
+
+.cityBlock.clinic, .cityBlock.district-hospital, .cityBlock.regional-hospital{
+    background-color: rgba(145, 0, 0, 0.7);
+}
+
+
+.cityBlock.security-office, .cityBlock.hamstapol-office, .cityBlock.hamstapol-headquarters, .cityBlock.toffee-bunker{
+    background-color: rgba(24, 1, 81, 0.7);
+}
+
+
+.cityBlock.primary-school, .cityBlock.high-school, .cityBlock.university, .cityBlock.ultra-mega-phd-research-center{
+    background-color: rgba(70, 1, 81, 0.7);
+}
+
+.cityBlock.basic-house, .cityBlock.upgraded-house, .cityBlock.small-apt, .cityBlock.lux-apt, .cityBlock.ultra-apt{
+    background-color: rgb(41, 41, 41, 0.7);
+}
+
+.cityBlock.entrance{
+    background-color: rgb(0, 0, 0, 0.7);
+}
+
+.positive{
+    color: #527675;
+}
+
+.negative{
+    color: #b64545;
+}
+
+#tooltip-box{
+    width: 30vw;
+    height: 30vh;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: white;
+    display: none;
+    overflow-y: scroll;
+    padding: 10px;
+    
+}
+
+#tooltip-box p{
+    font-size: 12px;
+    text-align: left;
+}
+
+#tooltip-box h1{
+    font-size: 16px;
+    text-align: center;
+}
+
+#delete-building-button, #delete-all-building-button{
+    border: 2px solid #610303;
+    border-radius: 5px;
+    color: #610303;
+    background-color: #f4a8a8;
+    width: calc(100% - 40px);
+    margin: 5px 20px;
+    font-size: 12px;
+}
+
+#quotation{
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 8px;
+}
+
+#close{
+    border: 2px solid #3e3e3e;
+    border-radius: 5px;
+    color: #3e3e3e;
+    background-color: #777777;
+    width: calc(100% - 40px);
+    margin: 5px 20px;
+    font-size: 12px;
+}
+
+#music-player{
+    width: 5vmin;
+    height: 5vmin;
+    font-size: 4.5vmin;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 100;   
+}
+
+small{
+    font-size: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.stat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 10px 10%;
+    
+
+}
+
+.indicator{
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 10vmin;
+    height: 5vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+
+}
+
+.grouped-text{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    
+}
+
+.grouped-p{
+    margin: 0;
+}
+
+#onboarding-tip{
+    width: 80vw;
+    height: 80vh;
+    background-color: white;
+    position: absolute;
+    left: calc(10vw - 20px);
+    top: calc(10vh - 20px);
+    z-index: 1000;
+    overflow-y: scroll;
+    padding: 20px;
+    border-radius: 10px;
+
+
+}
+
+#onboarding-tip li{
+    font-size: 18px;
+}
+
+#blur{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+    backdrop-filter: blur(5px);
+}
+
+#gov-spending-disable{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    backdrop-filter: blur(5px);
+
+}
